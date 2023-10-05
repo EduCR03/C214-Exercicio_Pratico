@@ -12,23 +12,35 @@ public class Main {
         String nome;
         String horario;
         String periodo;
-        int sala;
+        int sala = 0;
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Nome do Professor: ");
         nome = scanner.nextLine();
 
-        System.out.print("Horário de Atendimento: ");
+        System.out.print("Horário de Atendimento (HH:mm): ");
         horario = scanner.nextLine();
 
-        System.out.print("Período: ");
+        System.out.print("Período (Integral ou Noturno): ");
         periodo = scanner.nextLine();
 
-        System.out.print("Sala: ");
-        sala = scanner.nextInt();
-        // Consuma o caractere de nova linha
-        scanner.nextLine();
+        do {
+            try {
+                System.out.print("Sala: ");
+                sala = scanner.nextInt();
+                // Consuma o caractere de nova linha
+                scanner.nextLine();
+
+                // Saia do loop se o valor for válido
+                break;
+            } catch (Exception e) {
+                System.out.println("Erro: " + e);
+                System.out.println("Por favor digite um valor válido (Inteiro)!");
+                // Limpe o buffer de entrada para evitar um loop infinito
+                scanner.nextLine();
+            }
+        } while (true);
 
         jsonPage = JsonPage.generateJsonPage(nome, horario, periodo, sala);
         System.out.println(jsonPage);
