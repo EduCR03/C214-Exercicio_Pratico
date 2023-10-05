@@ -1,14 +1,13 @@
 package main.java.inatel;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String jsonPage;
+        // JsonPage jsonPage = new JsonPage();
+        String jsonFile;
         String nome;
         String horario;
         String periodo;
@@ -16,7 +15,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Nome do Professor: ");
+        System.out.print("Nome do Professor (Inatel): ");
         nome = scanner.nextLine();
 
         System.out.print("Horário de Atendimento (HH:mm): ");
@@ -27,13 +26,18 @@ public class Main {
 
         do {
             try {
-                System.out.print("Sala: ");
+                System.out.print("Sala (1 a 30): ");
                 sala = scanner.nextInt();
                 // Consuma o caractere de nova linha
                 scanner.nextLine();
 
-                // Saia do loop se o valor for válido
-                break;
+                // Verifique se o valor está fora do intervalo permitido
+                if (sala <= 0 || sala >= 31) {
+                    System.out.println("Erro. Por favor entrar com um valor válido (1 a 30)!");
+                } else {
+                    // Saia do loop se o valor for válido
+                    break;
+                }
             } catch (Exception e) {
                 System.out.println("Erro: " + e);
                 System.out.println("Por favor digite um valor válido (Inteiro)!");
@@ -42,21 +46,12 @@ public class Main {
             }
         } while (true);
 
-        jsonPage = JsonPage.generateJsonPage(nome, horario, periodo, sala);
-        System.out.println(jsonPage);
+        jsonFile = JsonPage.generateJsonPage(nome, horario, periodo, sala);
+        System.out.println(jsonFile);
 
-        // Escrevendo o json criado no arquivo musicas.json
-        FileWriter writer;
-        try {
-            writer = new FileWriter("jsonPageGenerator");
-            writer.write(jsonPage);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        JsonPage.saveJsonFiles(jsonFile);
 
         // Não esqueça de fechar o Scanner quando não for mais necessário.
         scanner.close();
     }
-
 }

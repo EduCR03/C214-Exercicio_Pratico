@@ -1,5 +1,8 @@
 package main.java.inatel;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 // import java.util.Scanner;
 import com.google.gson.Gson;
 
@@ -34,14 +37,31 @@ public class JsonPage {
             professor.setPredio(new String[] { "4" });
         } else if (sala >= 21 && sala <= 25) {
             professor.setPredio(new String[] { "5" });
-        } else
+        } else if (sala >= 26 && sala <= 30)
             professor.setPredio(new String[] { "6" });
+        else
+            professor.setPredio(new String[] { "Null" });
 
         // Use a biblioteca Gson para converter o objeto em JSON
         Gson gson = new Gson();
         String jsonPage = gson.toJson(professor);
 
         return jsonPage;
+    }
+
+    public static void saveJsonFiles(String jsonPage) {
+
+        // Escrevendo o json criado no arquivo musicas.json
+        FileWriter writer;
+        try {
+            writer = new FileWriter("jsonStore");
+            writer.write(jsonPage);
+            writer.close();
+            System.out.println();
+            System.out.println("JSON(s) salvo(s) em jsonStore.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
