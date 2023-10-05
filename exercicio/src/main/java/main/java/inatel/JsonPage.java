@@ -18,24 +18,24 @@ public class JsonPage {
 
         salaString = String.valueOf(sala);
 
-        Professor professor = new Professor();
+        Professor professor = new Professor(null, null, null, null);
         professor.setNomeDoProfessor(nome);
         professor.setHorarioDeAtendimento(horario);
         professor.setPeriodo(periodo);
         professor.setSala(salaString);
 
         if (sala >= 1 && sala <= 5) {
-            professor.setPredio(1);
+            professor.setPredio(new String[] { "1" });
         } else if (sala >= 6 && sala <= 10) {
-            professor.setPredio(2);
+            professor.setPredio(new String[] { "2" });
         } else if (sala >= 11 && sala <= 15) {
-            professor.setPredio(3);
+            professor.setPredio(new String[] { "3" });
         } else if (sala >= 16 && sala <= 20) {
-            professor.setPredio(4);
+            professor.setPredio(new String[] { "4" });
         } else if (sala >= 21 && sala <= 25) {
-            professor.setPredio(5);
+            professor.setPredio(new String[] { "5" });
         } else
-            professor.setPredio(6);
+            professor.setPredio(new String[] { "6" });
 
         // Use a biblioteca Gson para converter o objeto em JSON
         Gson gson = new Gson();

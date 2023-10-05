@@ -8,14 +8,15 @@ public class Professor {
     private String HorarioDeAtendimento;
     private String Periodo;
     private String Sala;
-    private int Predio;
+    private String[] Predio;
 
-    // public Professor(String nome, String horario, String periodo, int sala) {
-    // this.nome = nome;
-    // this.horario = LocalTime.parse(horario);
-    // this.periodo = periodo;
-    // this.sala = sala;
-    // }
+    public Professor(String nome, String horario, String periodo, String sala) {
+        this.NomeDoProfessor = nome;
+        this.HorarioDeAtendimento = horario;
+        this.Periodo = periodo;
+        this.Sala = sala;
+        this.Predio = new String[] { "1", "2", "3", "4", "5", "6" };
+    }
 
     public String getNomeDoProfessor() {
         return NomeDoProfessor;
@@ -49,11 +50,11 @@ public class Professor {
         this.Sala = sala;
     }
 
-    public int getPredio() {
+    public String[] getPredio() {
         return Predio;
     }
 
-    public void setPredio(int predio) {
+    public void setPredio(String[] predio) {
         this.Predio = predio;
     }
 }

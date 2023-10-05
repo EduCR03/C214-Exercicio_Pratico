@@ -1,0 +1,9 @@
+{
+  "NomeDoProfessor": "Dougzada",
+  "HorarioDeAtendimento": "18:00",
+  "Periodo": "Noturno",
+  "Sala": "20",
+  "Predio": [
+    "4"
+  ]
+}
