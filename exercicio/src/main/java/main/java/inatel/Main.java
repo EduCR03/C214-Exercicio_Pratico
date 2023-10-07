@@ -24,7 +24,7 @@ public class Main {
         System.out.print("Nome do Professor (Inatel): ");
         nome = scanner.nextLine();
 
-        System.out.print("Horário de Atendimento (HH:mm): ");
+        System.out.print("Horário de Atendimento (Dia - HH:mm): ");
         horario = scanner.nextLine();
 
         System.out.print("Período (Integral ou Noturno): ");

@@ -1,10 +1,10 @@
 {
-  "ID": 0,
-  "NomeDoProfessor": "ddasdsad",
-  "HorarioDeAtendimento": "dasdada",
-  "Periodo": "Integral",
-  "Sala": "29",
+  "ID": 1,
+  "NomeDoProfessor": "Douglas",
+  "HorarioDeAtendimento": "Segunda-feira 18:00",
+  "Periodo": "Noturno",
+  "Sala": "25",
   "Predio": [
-    "6"
+    "5"
   ]
 }
