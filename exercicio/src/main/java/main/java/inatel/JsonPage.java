@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 
 public class JsonPage {
 
-    public static String generateJsonPage(String nome, String horario, String periodo, int sala) {
+    public static String generateJsonPage(int id, String nome, String horario, String periodo, int sala) {
 
         String salaString;
 
@@ -21,7 +21,8 @@ public class JsonPage {
 
         salaString = String.valueOf(sala);
 
-        Professor professor = new Professor(null, null, null, null);
+        Professor professor = new Professor(0, null, null, null, null, null);
+        professor.setId(id);
         professor.setNomeDoProfessor(nome);
         professor.setHorarioDeAtendimento(horario);
         professor.setPeriodo(periodo);

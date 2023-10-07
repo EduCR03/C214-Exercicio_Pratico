@@ -8,12 +8,18 @@ public class Main {
 
         // JsonPage jsonPage;
         String jsonFile;
+        int id;
         String nome;
         String horario;
         String periodo;
         int sala = 0;
 
         Scanner scanner = new Scanner(System.in);
+
+        System.out.print("ID Único: ");
+        id = scanner.nextInt();
+        // Consuma o caractere de nova linha
+        scanner.nextLine();
 
         System.out.print("Nome do Professor (Inatel): ");
         nome = scanner.nextLine();
@@ -28,7 +34,6 @@ public class Main {
             try {
                 System.out.print("Sala (1 a 30): ");
                 sala = scanner.nextInt();
-                // Consuma o caractere de nova linha
                 scanner.nextLine();
 
                 // Verifique se o valor está fora do intervalo permitido
@@ -46,7 +51,7 @@ public class Main {
             }
         } while (true);
 
-        jsonFile = JsonPage.generateJsonPage(nome, horario, periodo, sala);
+        jsonFile = JsonPage.generateJsonPage(id, nome, horario, periodo, sala);
         System.out.println(jsonFile);
 
         JsonPage.saveJsonFiles(jsonFile);
