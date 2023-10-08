@@ -48,6 +48,7 @@ jobs:
         cache: maven
     - name: Build com maven
       run: |
+        cd exercicio
         mvn clean install
 
     - name: Upload de artefatos
