@@ -1,6 +1,7 @@
 package main.java.inatel.mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -71,5 +72,14 @@ public class TesteBuscaProfessor {
         Professor aquino = buscaProfessor.buscaProfessorById(4);
 
         assertEquals("8", aquino.getSala());
+    }
+
+    @Test
+    public void TesteBuscaProfessorValido(){
+        Mockito.when(buscaService.professorExists(1)).thenReturn(true);
+
+        boolean professorValido = buscaService.professorExists(1);
+
+        assertTrue(professorValido);
     }
 }
