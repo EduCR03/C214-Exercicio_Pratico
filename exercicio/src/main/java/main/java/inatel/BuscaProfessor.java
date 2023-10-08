@@ -56,7 +56,7 @@ public class BuscaProfessor {
         // Cria uma lista vazia que armazena objetos Professor
         // List<Professor> professores = new ArrayList<>();
 
-        List<Professor> professores = new ArrayList<>(null);
+        List<Professor> professores = new ArrayList<>();
 
         for (int i = 1; i <= 4; i++) {
             professores.add(i, buscaProfessorById(i));
