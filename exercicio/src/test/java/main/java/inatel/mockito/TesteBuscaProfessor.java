@@ -1,9 +1,10 @@
 package main.java.inatel.mockito;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -94,18 +95,18 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorExistePredioSamuel(){
+    public void TesteBuscaProfessorExistePredioSamuel() {
         Mockito.when(buscaService.buscaProfessor(4)).thenReturn(InfoProfessor.Samuel);
 
         Professor samuel = buscaProfessor.buscaProfessorById(4);
-        ArrayList<String> predios = new ArrayList<>();
-        predios.add("3");
+        String[] predios = { "3" };
 
-        assertEquals(predios.toArray(), samuel.getPredio());
+        // Usar assertArrayEquals para comparar arrays
+        assertArrayEquals(predios, samuel.getPredio());
     }
 
     @Test
-    public void TesteBuscaProfessorVerificaPeriodoAquino(){
+    public void TesteBuscaProfessorVerificaPeriodoAquino() {
         Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
 
         Professor aquino = buscaProfessor.buscaProfessorById(1);
@@ -113,15 +114,13 @@ public class TesteBuscaProfessor {
         assertEquals("Noturno", aquino.getPeriodo());
     }
 
-
     @Test
-    public void TesteBuscaProfessorChrisValido(){
+    public void TesteBuscaProfessorChrisValido() {
         Mockito.when(buscaService.professorExists(2)).thenReturn(true);
 
         boolean professorValido = buscaProfessor.verifyProfessorExists(2);
 
         assertTrue(professorValido);
     }
-
 
 }

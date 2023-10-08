@@ -1,7 +1,7 @@
 package main.java.inatel;
 
-import java.util.List;
-import java.lang.reflect.Array;
+// import java.util.List;
+// import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import com.google.gson.JsonArray;
