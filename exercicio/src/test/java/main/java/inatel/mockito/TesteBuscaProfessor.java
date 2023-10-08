@@ -76,10 +76,10 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorValido() {
+    public void TesteBuscaProfessorAquinoValido() {
         Mockito.when(buscaService.professorExists(1)).thenReturn(true);
 
-        boolean professorValido = buscaService.professorExists(1);
+        boolean professorValido = buscaProfessor.verifyProfessorExists(1);
 
         assertTrue(professorValido);
     }
@@ -113,6 +113,15 @@ public class TesteBuscaProfessor {
         assertEquals("Noturno", aquino.getPeriodo());
     }
 
+
+    @Test
+    public void TesteBuscaProfessorChrisValido(){
+        Mockito.when(buscaService.professorExists(2)).thenReturn(true);
+
+        boolean professorValido = buscaProfessor.verifyProfessorExists(2);
+
+        assertTrue(professorValido);
+    }
 
 
 }

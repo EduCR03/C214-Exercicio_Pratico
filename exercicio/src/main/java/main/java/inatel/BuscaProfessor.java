@@ -1,6 +1,7 @@
 package main.java.inatel;
 
 import java.util.List;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import com.google.gson.JsonArray;
@@ -51,12 +52,12 @@ public class BuscaProfessor {
                 predio);
     }
 
-    public List<Professor> buscaTodosProfessores() {
+    public ArrayList<Professor> buscaTodosProfessores() {
 
         // Cria uma lista vazia que armazena objetos Professor
         // List<Professor> professores = new ArrayList<>();
 
-        List<Professor> professores = new ArrayList<>();
+        ArrayList<Professor> professores = new ArrayList<>();
 
         for (int i = 1; i <= 4; i++) {
             professores.add(i, buscaProfessorById(i));
