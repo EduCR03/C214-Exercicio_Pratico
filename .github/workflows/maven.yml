@@ -21,6 +21,7 @@ jobs:
         cache: maven
     - name: Testes com maven
       run: |
+        ls
         mvn clean test site
 
     # - name: Upload de artefatos
