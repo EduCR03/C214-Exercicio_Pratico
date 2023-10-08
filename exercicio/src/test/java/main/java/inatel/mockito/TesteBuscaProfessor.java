@@ -29,6 +29,15 @@ public class TesteBuscaProfessor {
     }
 
     @Test
+    public void TesteBuscaProfessorAquino(){
+        Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
+
+        Professor aquino = buscaProfessor.buscaProfessorById(1);
+
+        assertEquals("Guilherme Aquino", aquino.getNomeDoProfessor());
+    }
+
+    @Test
     public void TesteBuscaProfessorChris(){
         Mockito.when(buscaService.buscaProfessor(2)).thenReturn(InfoProfessor.Chris);
 
@@ -47,20 +56,20 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorAquino(){
-        Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
-
-        Professor renzo = buscaProfessor.buscaProfessorById(1);
-
-        assertEquals("Guilherme Aquino", renzo.getNomeDoProfessor());
-    }
-
-    @Test
     public void TesteBuscaProfessorSamuel(){
         Mockito.when(buscaService.buscaProfessor(4)).thenReturn(InfoProfessor.Samuel);
 
-        Professor renzo = buscaProfessor.buscaProfessorById(4);
+        Professor samuel = buscaProfessor.buscaProfessorById(4);
 
-        assertEquals("Samuel Baraldi", renzo.getNomeDoProfessor());
+        assertEquals("Samuel Baraldi", samuel.getNomeDoProfessor());
+    }
+
+    @Test
+    public void TesteBuscaProfessorSalaAquino(){
+        Mockito.when(buscaService.buscaProfessor(4)).thenReturn(InfoProfessor.Aquino);
+
+        Professor aquino = buscaProfessor.buscaProfessorById(4);
+
+        assertEquals("8", aquino.getSala());
     }
 }
