@@ -1,5 +1,8 @@
 package main.java.inatel;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -46,5 +49,19 @@ public class BuscaProfessor {
                 jsonObject.get("Periodo").getAsString(),
                 jsonObject.get("Sala").getAsString(),
                 predio);
+    }
+
+    public List<Professor> buscaTodosProfessores() {
+
+        // Cria uma lista vazia que armazena objetos Professor
+        // List<Professor> professores = new ArrayList<>();
+
+        List<Professor> professores = new ArrayList<>(null);
+
+        for (int i = 1; i <= 4; i++) {
+            professores.add(i, buscaProfessorById(i));
+        }
+
+        return professores;
     }
 }

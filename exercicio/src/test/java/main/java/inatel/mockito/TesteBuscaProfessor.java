@@ -17,20 +17,19 @@ import main.java.inatel.Professor;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TesteBuscaProfessor {
-    
+
     @Mock
     private BuscaService buscaService;
 
     private BuscaProfessor buscaProfessor;
 
-
     @Before
-    public void setup(){
+    public void setup() {
         buscaProfessor = new BuscaProfessor(buscaService);
     }
 
     @Test
-    public void TesteBuscaProfessorAquino(){
+    public void TesteBuscaProfessorAquino() {
         Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
 
         Professor aquino = buscaProfessor.buscaProfessorById(1);
@@ -39,7 +38,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorChris(){
+    public void TesteBuscaProfessorChris() {
         Mockito.when(buscaService.buscaProfessor(2)).thenReturn(InfoProfessor.Chris);
 
         Professor chris = buscaProfessor.buscaProfessorById(2);
@@ -48,7 +47,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorRenzo(){
+    public void TesteBuscaProfessorRenzo() {
         Mockito.when(buscaService.buscaProfessor(3)).thenReturn(InfoProfessor.Renzo);
 
         Professor renzo = buscaProfessor.buscaProfessorById(3);
@@ -57,7 +56,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorSamuel(){
+    public void TesteBuscaProfessorSamuel() {
         Mockito.when(buscaService.buscaProfessor(4)).thenReturn(InfoProfessor.Samuel);
 
         Professor samuel = buscaProfessor.buscaProfessorById(4);
@@ -66,7 +65,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorSalaAquino(){
+    public void TesteBuscaProfessorSalaAquino() {
         Mockito.when(buscaService.buscaProfessor(4)).thenReturn(InfoProfessor.Aquino);
 
         Professor aquino = buscaProfessor.buscaProfessorById(4);
@@ -75,7 +74,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorValido(){
+    public void TesteBuscaProfessorValido() {
         Mockito.when(buscaService.professorExists(1)).thenReturn(true);
 
         boolean professorValido = buscaService.professorExists(1);
@@ -84,13 +83,12 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorNull(){
+    public void TesteBuscaProfessorNull() {
         Mockito.when(buscaService.buscaProfessor(0)).thenReturn(InfoProfessor.Null);
 
         Professor inexistente = buscaProfessor.buscaProfessorById(0);
 
         assertEquals("Null", inexistente.getNomeDoProfessor());
     }
-
 
 }
