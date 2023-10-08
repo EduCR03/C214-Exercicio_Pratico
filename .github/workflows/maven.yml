@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -19,5 +19,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Testes com maven
+      run: |
+        cd Aula-GitHub-Actions
+        mvn clean test site
+
+    - name: Upload de artefatos
+      uses: actions/upload-artifact@v3
+      with:
+        name: relatorio-testes
+        path: Aula-GitHub-Actions/target/site/
+
