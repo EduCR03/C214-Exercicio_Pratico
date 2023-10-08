@@ -45,4 +45,13 @@ public class TesteBuscaProfessor {
 
         assertEquals("Renzo Mesquita", renzo.getNomeDoProfessor());
     }
+
+    @Test
+    public void TesteBuscaProfessorAquino(){
+        Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
+
+        Professor renzo = buscaProfessor.buscaProfessorById(1);
+
+        assertEquals("Guilherme Aquino", renzo.getNomeDoProfessor());
+    }
 }
