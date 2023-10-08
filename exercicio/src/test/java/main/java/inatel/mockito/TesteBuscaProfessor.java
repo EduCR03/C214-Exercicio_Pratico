@@ -3,6 +3,8 @@ package main.java.inatel.mockito;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -90,5 +92,27 @@ public class TesteBuscaProfessor {
 
         assertEquals("Null", inexistente.getNomeDoProfessor());
     }
+
+    @Test
+    public void TesteBuscaProfessorExistePredioSamuel(){
+        Mockito.when(buscaService.buscaProfessor(4)).thenReturn(InfoProfessor.Samuel);
+
+        Professor samuel = buscaProfessor.buscaProfessorById(4);
+        ArrayList<String> predios = new ArrayList<>();
+        predios.add("3");
+
+        assertEquals(predios.toArray(), samuel.getPredio());
+    }
+
+    @Test
+    public void TesteBuscaProfessorVerificaPeriodoAquino(){
+        Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
+
+        Professor aquino = buscaProfessor.buscaProfessorById(1);
+
+        assertEquals("Noturno", aquino.getPeriodo());
+    }
+
+
 
 }
