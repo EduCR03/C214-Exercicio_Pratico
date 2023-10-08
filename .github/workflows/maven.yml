@@ -64,3 +64,16 @@ jobs:
         path: Aula-GitHub-Actions/target/*.jar
 
 
+  notificacao:
+
+    runs-on: ubuntu-latest
+
+    env:
+      EMAIL_LIST: eduardo.costa@ges.inatel.br
+
+    steps:
+    - name: Executa comandos
+      uses: actions/checkout@v3
+    - run: sh exercicio/scripts/shell.sh
+
+
