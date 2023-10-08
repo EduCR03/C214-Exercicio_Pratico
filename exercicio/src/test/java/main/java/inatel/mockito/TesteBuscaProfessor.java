@@ -83,4 +83,14 @@ public class TesteBuscaProfessor {
         assertTrue(professorValido);
     }
 
+    @Test
+    public void TesteBuscaProfessorNull(){
+        Mockito.when(buscaService.buscaProfessor(0)).thenReturn(InfoProfessor.Null);
+
+        Professor inexistente = buscaProfessor.buscaProfessorById(0);
+
+        assertEquals("Null", inexistente.getNomeDoProfessor());
+    }
+
+
 }

@@ -30,7 +30,7 @@ public class InfoProfessor {
             "\"Sala\": \"12\", \n " +
             "\"Predio\": [\"3\"] }";
 
-    public static String Null = "{ \"ID\": Null, \n " +
+    public static String Null = "{ \"ID\": 0, \n " +
             "\"NomeDoProfessor\": \"Null\", \n " +
             "\"HorarioDeAtendimento\": \"Null\", \n " +
             "\"Periodo\": \"Null\", \n " +
