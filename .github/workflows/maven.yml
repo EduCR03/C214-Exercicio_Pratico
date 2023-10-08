@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      EMAIL_LIST: douglas.brandao@gec.inatel.br
+      EMAIL_LIST: douglasbsouza01@gmail.com
 
     steps:
     - name: Executa comandos
