@@ -147,7 +147,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorPredioChrisFalha(){
+    public void TesteBuscaProfessorPredioChrisFalha() {
         Mockito.when(buscaService.buscaProfessor(2)).thenReturn(InfoProfessor.Chris);
 
         Professor chris = buscaProfessor.buscaProfessorById(2);
@@ -157,7 +157,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorSalaRenzoFalha(){
+    public void TesteBuscaProfessorSalaRenzoFalha() {
         Mockito.when(buscaService.buscaProfessor(3)).thenReturn(InfoProfessor.Renzo);
 
         Professor renzo = buscaProfessor.buscaProfessorById(3);
@@ -167,7 +167,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorPeriodoAquino(){
+    public void TesteBuscaProfessorPeriodoAquino() {
         Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
 
         Professor aquino = buscaProfessor.buscaProfessorById(1);
@@ -177,7 +177,7 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorSamuelNaoExiste(){
+    public void TesteBuscaProfessorSamuelNaoExiste() {
         Mockito.when(buscaService.professorExists(4)).thenReturn(false);
 
         boolean samuelNaoExiste = buscaProfessor.verifyProfessorExists(4);
@@ -185,16 +185,14 @@ public class TesteBuscaProfessor {
     }
 
     @Test
-    public void TesteBuscaProfessorHorarioAtendimentoChris(){
+    public void TesteBuscaProfessorHorarioAtendimentoChris() {
         Mockito.when(buscaService.buscaProfessor(2)).thenReturn(InfoProfessor.Chris);
 
         Professor chris = buscaProfessor.buscaProfessorById(2);
-        
+
         String horario = "Quarta-feira 18:00";
 
-        assertNotEquals(horario,chris.getHorarioDeAtendimento());
+        assertNotEquals(horario, chris.getHorarioDeAtendimento());
     }
-
-
 
 }

@@ -2,6 +2,9 @@ package main.java.inatel;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 // import java.util.Scanner;
 import com.google.gson.Gson;
@@ -63,6 +66,17 @@ public class JsonPage {
             writer.close();
             System.out.println();
             System.out.println("JSON(s) salvo(s) em jsonStore.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteJsonStore() {
+
+        // Após cada teste, exclua o arquivo JSON, se existir
+        Path path = Paths.get("./jsonStore");
+        try {
+            Files.deleteIfExists(path);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -4,6 +4,9 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 import org.junit.Before;
 // import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +16,10 @@ public class TesteJsonPage {
 
     Gson gson;
     String objetoJson;
+    String objetoJsonErrado;
     Professor professor;
+    String savedJson;
+    private String jsonStorePath;
 
     int id;
     String nome;
@@ -31,6 +37,8 @@ public class TesteJsonPage {
     @Before
     public void setup() {
         gson = new Gson();
+        savedJson = "";
+        jsonStorePath = "./jsonStore";
 
         id = 0;
         nome = "Christopher";
@@ -103,6 +111,24 @@ public class TesteJsonPage {
         assertArrayEquals(predio, professor.getPredio());
     }
 
+    @Test
+    public void TesteSaveJsonFiles() {
+
+        JsonPage.deleteJsonStore();
+        objetoJson = JsonPage.generateJsonPage(id, nome, horario, periodo, sala);
+        JsonPage.saveJsonFiles(objetoJson);
+
+        try {
+            savedJson = new String(Files.readAllBytes(Paths.get(jsonStorePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Verifique se o conteúdo do arquivo corresponde ao JSON gerado
+        assertEquals(objetoJson, savedJson);
+
+    }
+
     // # $$$$$$$$$$$$$$$$$$$$$$$$ Testes Falhos $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
     @Test
@@ -151,6 +177,96 @@ public class TesteJsonPage {
         // assertNotEquals utilizando "predio" e não "predioErrado" está funcionando.
         // BUG.
         assertNotEquals(predioErrado, professor.getPredio());
+    }
+
+    @Test
+    public void TesteSaveJsonFilesFalho() {
+
+        JsonPage.deleteJsonStore();
+        objetoJson = JsonPage.generateJsonPage(id, nome, horario, periodo, sala);
+        objetoJsonErrado = JsonPage.generateJsonPage(1, nome, horario, periodo, sala);
+        JsonPage.saveJsonFiles(objetoJson);
+
+        try {
+            savedJson = new String(Files.readAllBytes(Paths.get(jsonStorePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Verifique se o conteúdo do arquivo corresponde ao JSON gerado
+        assertNotEquals(objetoJsonErrado, savedJson);
+    }
+
+    @Test
+    public void TesteSaveJsonFilesNomeFalho() {
+
+        JsonPage.deleteJsonStore();
+        objetoJson = JsonPage.generateJsonPage(id, nome, horario, periodo, sala);
+        objetoJsonErrado = JsonPage.generateJsonPage(id, nomeErrado, horario, periodo, sala);
+        JsonPage.saveJsonFiles(objetoJson);
+
+        try {
+            savedJson = new String(Files.readAllBytes(Paths.get(jsonStorePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Verifique se o conteúdo do arquivo corresponde ao JSON gerado
+        assertNotEquals(objetoJsonErrado, savedJson);
+    }
+
+    @Test
+    public void TesteSaveJsonFilesHorarioFalho() {
+
+        JsonPage.deleteJsonStore();
+        objetoJson = JsonPage.generateJsonPage(id, nome, horario, periodo, sala);
+        objetoJsonErrado = JsonPage.generateJsonPage(id, nome, horarioErrado, periodo, sala);
+        JsonPage.saveJsonFiles(objetoJson);
+
+        try {
+            savedJson = new String(Files.readAllBytes(Paths.get(jsonStorePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Verifique se o conteúdo do arquivo corresponde ao JSON gerado
+        assertNotEquals(objetoJsonErrado, savedJson);
+    }
+
+    @Test
+    public void TesteSaveJsonFilesPeriodoFalho() {
+
+        JsonPage.deleteJsonStore();
+        objetoJson = JsonPage.generateJsonPage(id, nome, horario, periodo, sala);
+        objetoJsonErrado = JsonPage.generateJsonPage(id, nome, horario, periodoErrado, sala);
+        JsonPage.saveJsonFiles(objetoJson);
+
+        try {
+            savedJson = new String(Files.readAllBytes(Paths.get(jsonStorePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Verifique se o conteúdo do arquivo corresponde ao JSON gerado
+        assertNotEquals(objetoJsonErrado, savedJson);
+    }
+
+    @Test
+    public void TesteSaveJsonFilesSalaFalho() {
+
+        JsonPage.deleteJsonStore();
+        objetoJson = JsonPage.generateJsonPage(id, nome, horario, periodo, sala);
+        objetoJsonErrado = JsonPage.generateJsonPage(id, "Guilherme", horario, periodo, salaErrado);
+        JsonPage.saveJsonFiles(objetoJson);
+
+        try {
+            savedJson = new String(Files.readAllBytes(Paths.get(jsonStorePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Verifique se o conteúdo do arquivo corresponde ao JSON gerado
+        assertNotEquals(objetoJsonErrado, savedJson);
     }
 
 }
