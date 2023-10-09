@@ -11,6 +11,7 @@ public class JsonPage {
     public static String generateJsonPage(int id, String nome, String horario, String periodo, int sala) {
 
         String salaString;
+        Professor professor;
 
         // String stringPage = "{"
         // + "\"nomeDoProfessor\": \"" + professor.nome + "\","
@@ -21,7 +22,7 @@ public class JsonPage {
 
         salaString = String.valueOf(sala);
 
-        Professor professor = new Professor(0, null, null, null, null, null);
+        professor = new Professor(0, null, null, null, null, null);
         professor.setId(id);
         professor.setNomeDoProfessor(nome);
         professor.setHorarioDeAtendimento(horario);
@@ -42,6 +43,8 @@ public class JsonPage {
             professor.setPredio(new String[] { "6" });
         else
             professor.setPredio(new String[] { "Null" });
+
+        // System.out.println(professor.getNomeDoProfessor());
 
         // Use a biblioteca Gson para converter o objeto em JSON
         Gson gson = new Gson();
