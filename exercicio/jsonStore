@@ -1,1 +1,10 @@
-{"ID":0,"NomeDoProfessor":"Christopher","HorarioDeAtendimento":"Sexta-feira 17:30","Periodo":"Noturno","Sala":"18","Predio":["4"]}
+{
+  "ID": 0,
+  "NomeDoProfessor": "Christopher",
+  "HorarioDeAtendimento": "Sexta-feira 17:30",
+  "Periodo": "Noturno",
+  "Sala": "18",
+  "Predio": [
+    "4"
+  ]
+}
