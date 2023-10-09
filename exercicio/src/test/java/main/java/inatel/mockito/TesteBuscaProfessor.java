@@ -145,4 +145,24 @@ public class TesteBuscaProfessor {
         assertNotEquals("Guilherme Aquino", chris.getNomeDoProfessor());
     }
 
+    @Test
+    public void TesteBuscaProfessorPredioChrisFalha(){
+        Mockito.when(buscaService.buscaProfessor(2)).thenReturn(InfoProfessor.Chris);
+
+        Professor chris = buscaProfessor.buscaProfessorById(2);
+        String[] predios = { "3" };
+
+        assertNotEquals(predios, chris.getPredio());
+    }
+
+    @Test
+    public void TesteBuscaProfessorSalaRenzoFalha(){
+        Mockito.when(buscaService.buscaProfessor(3)).thenReturn(InfoProfessor.Renzo);
+
+        Professor renzo = buscaProfessor.buscaProfessorById(3);
+        String sala = "30";
+
+        assertNotEquals(sala, renzo.getSala());
+    }
+
 }
