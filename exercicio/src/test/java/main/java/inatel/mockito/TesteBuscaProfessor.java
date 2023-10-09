@@ -2,6 +2,7 @@ package main.java.inatel.mockito;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -174,5 +175,26 @@ public class TesteBuscaProfessor {
 
         assertNotEquals(periodo, aquino.getPeriodo());
     }
+
+    @Test
+    public void TesteBuscaProfessorSamuelNaoExiste(){
+        Mockito.when(buscaService.professorExists(4)).thenReturn(false);
+
+        boolean samuelNaoExiste = buscaProfessor.verifyProfessorExists(4);
+        assertFalse(samuelNaoExiste);
+    }
+
+    @Test
+    public void TesteBuscaProfessorHorarioAtendimentoChris(){
+        Mockito.when(buscaService.buscaProfessor(2)).thenReturn(InfoProfessor.Chris);
+
+        Professor chris = buscaProfessor.buscaProfessorById(2);
+        
+        String horario = "Quarta-feira 18:00";
+
+        assertNotEquals(horario,chris.getHorarioDeAtendimento());
+    }
+
+
 
 }
