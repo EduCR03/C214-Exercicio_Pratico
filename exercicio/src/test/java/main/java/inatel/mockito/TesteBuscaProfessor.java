@@ -137,12 +137,12 @@ public class TesteBuscaProfessor {
 
     @Test
     public void TesteBuscaProfessorAquinoFalha() {
-        Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
+        // Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
         Mockito.when(buscaService.buscaProfessor(2)).thenReturn(InfoProfessor.Chris);
 
-        Professor aquino = buscaProfessor.buscaProfessorById(2);
+        Professor chris = buscaProfessor.buscaProfessorById(2);
 
-        assertNotEquals("Guilherme Aquino", aquino.getNomeDoProfessor());
+        assertNotEquals("Guilherme Aquino", chris.getNomeDoProfessor());
     }
 
 }
