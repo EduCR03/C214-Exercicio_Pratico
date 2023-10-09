@@ -165,4 +165,14 @@ public class TesteBuscaProfessor {
         assertNotEquals(sala, renzo.getSala());
     }
 
+    @Test
+    public void TesteBuscaProfessorPeriodoAquino(){
+        Mockito.when(buscaService.buscaProfessor(1)).thenReturn(InfoProfessor.Aquino);
+
+        Professor aquino = buscaProfessor.buscaProfessorById(1);
+        String periodo = "Integral";
+
+        assertNotEquals(periodo, aquino.getPeriodo());
+    }
+
 }
